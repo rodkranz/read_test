@@ -15,7 +15,7 @@ var fileSize int = 1024 * 64
 
 func init() {
 	flag.StringVar(&fileName, "fileName", "data.json", "Define the name of json")
-	flag.IntVar(&fileSize, "bytes", 1024, "Define the number of bytes (default 1024^2).")
+	flag.IntVar(&fileSize, "bytes", 12558918857, "Define the number of bytes (default 12558918857) (12GB).")
 	flag.Parse()
 }
 
@@ -26,8 +26,6 @@ func main() {
 		os.Exit(1)
 	}
 	defer file.Close()
-
-	fileSize = 1024 * 1024 * fileSize
 
 	var tmpSize int = 0
 	var dataSize int = len(data)
