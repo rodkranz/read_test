@@ -27,6 +27,8 @@ func main() {
 	}
 	defer file.Close()
 
+
+
 	var tmpSize int = 0
 	var dataSize int = len(data)
 	for {
@@ -34,8 +36,9 @@ func main() {
 
 		// if file size will be more then fileSize it will adjust
 		if next > fileSize {
-			next = dataSize - (next - fileSize)
-			data = data[:next]
+			adjust := dataSize - (next - fileSize)
+			data = data[:adjust]
+			next = tmpSize + adjust
 		}
 
 		file.Write(data) // write chunk
