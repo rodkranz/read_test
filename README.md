@@ -32,6 +32,10 @@
     Bytes: 12558918857 Chunks: 191634
     python pythonRead.py  0.37s user 6.41s system 64% cpu 10.471 total
 
+## JAVA 
+    [java] javac ReadFile.java                                                                                                                                                                                                                               master  ✭ ✱
+    
+
 ## Results
 
 | Language | Version |   User   | System  |  CPU  |   Time    |
