@@ -4,9 +4,9 @@
 package main
 
 import (
-	"os"
-	"fmt"
 	"flag"
+	"fmt"
+	"os"
 )
 
 var data = []byte("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis dolor non nisl lobortis dictum id vitae metus. Quisque pharetra neque quis metus congue laoreet. In finibus gravida lectus id mollis. Ut bibendum neque in magna fringilla volutpat. Fusce tempor posuere quam, vitae vehicula nisi dapibus placerat. Nam sed maximus diam, non faucibus elit. Nunc ultricies dui nec pellentesque pellentesque. Ut augue dui, condimentum quis vestibulum et, egestas sit amet nulla. Nam elementum mauris nec quam molestie, efficitur tempor metus dapibus. In vestibulum pretium dolor et tristique. Phasellus eu magna dignissim, ornare ex id, fringilla mauris. Pellentesque sed orci ligula. Donec ante neque, euismod quis erat eget, suscipit bibendum erat.\n")
@@ -26,8 +26,6 @@ func main() {
 		os.Exit(1)
 	}
 	defer file.Close()
-
-
 
 	var tmpSize int = 0
 	var dataSize int = len(data)
