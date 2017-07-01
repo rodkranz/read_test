@@ -13,6 +13,11 @@ import (
 func main() {
 	reader := bufio.NewReader(os.Stdin)
 
+	name := "unknown"
+	if len(os.Args) > 1 {
+		name = os.Args[1]
+	}
+
 	line, _, err := reader.ReadLine()
 	if err != nil {
 		fmt.Println(err)
@@ -47,11 +52,11 @@ func main() {
 	total := (fileInfo.Size() / chunk) + 1
 	text = fmt.Sprintf("Bytes: %d Chunks: %d", fileInfo.Size(), total)
 	if string(line) == text {
-		fmt.Println("The results are correct.")
+		fmt.Printf("The results are correct for [%s].\n", name)
 		os.Exit(0)
 	}
 
-	fmt.Println("The results are wrong.")
+	fmt.Printf("The results are wrong for [%s].\n", name)
 	fmt.Printf("\t Expected: %s\n", text)
 	fmt.Printf("\t   Actual: %s\n", line)
 	os.Exit(1)

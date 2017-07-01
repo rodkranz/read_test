@@ -1,9 +1,9 @@
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,22 +18,20 @@ import java.io.IOException;
 public class ReadFile {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        BufferedInputStream is = new BufferedInputStream(new FileInputStream("../data.json"));
-        byte[] buf = new byte[64*1024];
+        BufferedReader reader = new BufferedReader(new FileReader("data.json"));
+        char[] buf = new char[64*1024];
         long sz = 0;
         long n = 0;
         int chunks = 0;
 
         System.out.println("Started Reading json file.");
-        long time = System.currentTimeMillis();
-        while ((n = is.read(buf)) >= 0) {
-            sz += n;
-            chunks++;
+        while ((n = reader.read(buf)) >= 0) {
+           sz += n;
+           chunks++;
         }
-        System.out.println(System.currentTimeMillis()-time);
-
         System.out.printf("Bytes: %d Chunks: %d\n", sz, chunks);
-        is.close();
+
+        reader.close();
     }
 
 }

@@ -1,5 +1,5 @@
 <?php
-$fileName = '../data.json';
+$fileName = 'data.json';
 $handle = fopen($fileName, "rb");
 if (FALSE === $handle) {
     exit("Error to read [file=${fileName}].");

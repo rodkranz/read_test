@@ -1,4 +1,4 @@
-file = '../data.json'
+file = 'data.json'
 
 f = open(file, 'rb')
 

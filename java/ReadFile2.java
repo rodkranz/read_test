@@ -18,7 +18,7 @@ import java.io.InputStreamReader;
 public class ReadFile2 {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("../data.json"));
+        BufferedReader reader = new BufferedReader(new FileReader("data.json"));
         char[] buf = new char[64*1024];
         long sz = 0;
         long n = 0;

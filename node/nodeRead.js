@@ -1,5 +1,5 @@
 var fs = require('fs');
-var stream = fs.createReadStream('../data.json', 'UTF-8');
+var stream = fs.createReadStream('./data.json', 'UTF-8');
 
 var nBytes = 0;
 var nChunks = 0;
