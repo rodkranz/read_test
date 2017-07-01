@@ -47,5 +47,5 @@ func main() {
 		}
 	}
 
-	fmt.Printf("tmp: %d - size: %d \n", tmpSize, fileSize)
+	fmt.Printf("File [%s] has been generated with [%d] bytes\n", fileName, tmpSize)
 }

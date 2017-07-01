@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	fileName := "../data.json"
+	fileName := "data.json"
 	f, err := os.Open(fileName)
 	if err != nil {
 		fmt.Printf("Error to read [file=%v]: %v\n", fileName, err.Error())
