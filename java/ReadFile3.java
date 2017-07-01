@@ -33,8 +33,8 @@ public class ReadFile3 {
            maps.add(map);
            chunckCount++;
         }
-        raf.close();
 
+        raf.close();
         long t1 = System.currentTimeMillis();
 
         System.out.println("took: " + (t1 - t0) + "ms" + " Chunks " + chunckCount);
