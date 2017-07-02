@@ -12,23 +12,22 @@ public class ReadFile3 {
         
         long t0 = System.currentTimeMillis();
 
+        File file                   = new File("../data.json");
+
         final int chunck            = 64*1024;        
         long len                    = file.length();
         long chunckCount            = 0l;
         long off                    = 0;
-
-        File file                   = new File("../data.json");
 
         RandomAccessFile raf        = new RandomAccessFile(file, "rw");
         raf.setLength(len);
         
         FileChannel chan            = raf.getChannel();
         List<MappedByteBuffer> maps = new ArrayList<MappedByteBuffer>(); 
-        
-                
+
         while (off < len)
         {
-           MappedByteBuffer map = chan.map(MapMode.READ_WRITE, off, chunck);
+           MappedByteBuffer map = chan.map(MapMode.READ_ONLY, off, chunck);
            off += map.capacity();
            maps.add(map);
            chunckCount++;
