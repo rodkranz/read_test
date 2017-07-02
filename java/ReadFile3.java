@@ -9,16 +9,16 @@ import java.util.List;
 public class ReadFile3 {
 
     public static void main( String[] args ) throws Exception {
-        //12GB
-        long len = 12L * 1024 * 1024 * 1024;
         
+        long t0 = System.currentTimeMillis();
+        
+        final int chunck = 64*1024;        
         File file = new File("../data.json");
+        long len = file.length();
 
         RandomAccessFile raf = new RandomAccessFile(file, "rw");
         raf.setLength(len);
         FileChannel chan = raf.getChannel();
-
-        long t0 = System.currentTimeMillis();
         
         List<MappedByteBuffer> maps = new ArrayList<MappedByteBuffer>(); 
         long chunckCount = 0l;
@@ -26,9 +26,7 @@ public class ReadFile3 {
         
         while (off < len)
         {
-           long chunk = Math.min(len - off, Integer.MAX_VALUE);
-           MappedByteBuffer map;
-           map = chan.map(MapMode.READ_WRITE, off, chunk);
+           MappedByteBuffer map = chan.map(MapMode.READ_WRITE, off, chunck);
            off += map.capacity();
            maps.add(map);
            chunckCount++;
@@ -37,7 +35,7 @@ public class ReadFile3 {
         raf.close();
         long t1 = System.currentTimeMillis();
 
-        System.out.println("took: " + (t1 - t0) + "ms" + " Chunks " + chunckCount);
+        System.out.println("Took: " + (t1 - t0) + "ms" + " Chunks: " + chunckCount + " Bytes: " + len );
     }
     
 }
