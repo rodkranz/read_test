@@ -11,19 +11,21 @@ public class ReadFile3 {
     public static void main( String[] args ) throws Exception {
         
         long t0 = System.currentTimeMillis();
-        
-        final int chunck = 64*1024;        
-        File file = new File("../data.json");
-        long len = file.length();
 
-        RandomAccessFile raf = new RandomAccessFile(file, "rw");
+        final int chunck            = 64*1024;        
+        long len                    = file.length();
+        long chunckCount            = 0l;
+        long off                    = 0;
+
+        File file                   = new File("../data.json");
+
+        RandomAccessFile raf        = new RandomAccessFile(file, "rw");
         raf.setLength(len);
-        FileChannel chan = raf.getChannel();
         
+        FileChannel chan            = raf.getChannel();
         List<MappedByteBuffer> maps = new ArrayList<MappedByteBuffer>(); 
-        long chunckCount = 0l;
-        long off = 0;
         
+                
         while (off < len)
         {
            MappedByteBuffer map = chan.map(MapMode.READ_WRITE, off, chunck);
